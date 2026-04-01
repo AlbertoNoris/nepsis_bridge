@@ -1,0 +1,21 @@
+{
+  "name": "nepsis",
+  "private": true,
+  "workspaces": [
+    "packages/shared",
+    "packages/daemon",
+    "packages/cli"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=packages/shared && npm run build --workspace=packages/daemon && npm run build --workspace=packages/cli",
+    "clean": "rm -rf packages/shared/dist packages/daemon/dist packages/cli/dist",
+    "test": "vitest run",
+    "test:unit": "vitest run packages/",
+    "test:integration": "vitest run tests/",
+    "test:watch": "vitest",
+    "postinstall": "chmod +x node_modules/node-pty/prebuilds/darwin-arm64/spawn-helper"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.2"
+  }
+}
